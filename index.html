@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMIC | The Jagged Desk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body class="desk-view">
+
+    <div id="app">
+        <!-- Wooden Table Background -->
+        <div class="wood-background"></div>
+        
+        <!-- Spotlight / Lamp Lighting -->
+        <div class="desk-lighting"></div>
+
+        <!-- Paper Texture Overlay -->
+        <div class="paper-overlay"></div>
+
+        <!-- Spread Navigation UI -->
+        <nav class="spread-nav">
+            <button id="prev-page" class="nav-btn" aria-label="Previous Page">
+                <span>←</span> LEFT
+            </button>
+            
+            <div class="page-indicator">
+                <span class="dot" data-page="0"></span>
+                <span class="dot active" data-page="1"></span>
+                <span class="dot" data-page="2"></span>
+            </div>
+
+            <button id="next-page" class="nav-btn" aria-label="Next Page">
+                RIGHT <span>→</span>
+            </button>
+        </nav>
+
+        <!-- Main Spread Wrapper (Horizontal) -->
+        <div class="spread-wrapper">
+            <!-- Spread 0: The Beginning -->
+            <main class="comic-spread" id="spread-0">
+                <div class="spread-container">
+                    <section class="comic-page page-left" id="page-0-left"></section>
+                    <section class="comic-page page-right" id="page-0-right"></section>
+                </div>
+            </main>
+
+            <!-- Spread 1: The Home (Active) -->
+            <main class="comic-spread" id="spread-1">
+                <div class="spread-container">
+                    <section class="comic-page page-left" id="page-1-left"></section>
+                    <section class="comic-page page-right" id="page-1-right"></section>
+                </div>
+            </main>
+
+            <!-- Spread 2: The Future -->
+            <main class="comic-spread" id="spread-2">
+                <div class="spread-container">
+                    <section class="comic-page page-left" id="page-2-left"></section>
+                    <section class="comic-page page-right" id="page-2-right"></section>
+                </div>
+            </main>
+        </div>
+
+        <!-- Global FX Layer -->
+        <div id="fx-layer"></div>
+
+        <!-- Active Panel Overlay -->
+        <div id="panel-expansion-overlay">
+            <button class="close-panel" aria-label="Close panel">
+                <span class="close-text">BACK TO SPREAD</span>
+                <span class="close-icon">&times;</span>
+            </button>
+            <div class="expanded-content"></div>
+        </div>
+    </div>
+
+    <!-- SVG Filters & Assets -->
+    <svg style="display: none;">
+        <defs>
+            <filter id="halftone">
+                <feFlood flood-color="white" result="neutral"/>
+                <feImage xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCI+PGNpcmNsZSBjeD0iNSIgY3k9IjUiIHI9IjIiIGZpbGw9ImJsYWNrIi8+PC9zdmc+" width="10" height="10" patternUnits="userSpaceOnUse" result="dots"/>
+                <feTile in="dots" result="tile"/>
+                <feComposite in="tile" in2="SourceGraphic" operator="arithmetic" k1="0" k2="1" k3="1" k4="-1"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
